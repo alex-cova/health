@@ -1,0 +1,21 @@
+GET http://localhost:8080/v3/api-docs/
+
+###
+
+GET http://localhost:8080/hello
+
+
+###
+
+PUT http://localhost:8080/country/
+Content-Type: application/json
+
+{
+  "uuid" : "a8dc1b6f-74bf-4678-a3af-223c669c9aa1",
+  "name" : "Argentina"
+}
+
+
+###
+
+GET http://localhost:8080/country/a8dc1b6d-74bf-4678-a3af-223c669c9aa1
