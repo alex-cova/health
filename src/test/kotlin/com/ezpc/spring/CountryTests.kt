@@ -40,7 +40,7 @@ class CountryTests {
 
         val id = UUID.randomUUID()
 
-        "/country/".post(CountryDto(id, "México"))
+        "/country/".put(CountryDto(id, "México"))
             .assertOk();
 
         val country = "/country/$id".get(CountryDto::class.java)
