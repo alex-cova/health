@@ -95,6 +95,7 @@ jooq {
 
                     target.apply {
                         packageName = "com.ezpc.mysql"
+                        directory = "src/main/java/com/ezpc/mysql"
                     }
 
 
