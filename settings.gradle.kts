@@ -1,3 +1,3 @@
-rootProject.name = "spring"
+rootProject.name = "health"
 
 include("domain")

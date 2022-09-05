@@ -10,6 +10,11 @@ import java.util.UUID;
 
 import static com.ezpc.mysql.Tables.COUNTRY;
 
+/**
+ * Los repositorios no deben tener lógica
+ *
+ * @author alex
+ */
 @Repository
 public class CountryRepositoryImpl implements CountryRepository {
 
@@ -23,7 +28,6 @@ public class CountryRepositoryImpl implements CountryRepository {
         var record = dsl.selectFrom(COUNTRY)
                 .where(COUNTRY.UUID.eq(uuid.toString()))
                 .fetchOne();
-
 
         if (record == null) return null;
 

@@ -10,6 +10,11 @@ import java.util.UUID;
 
 import static com.ezpc.mysql.Tables.COUNTRY;
 
+/**
+ * Los servicios no deben tener lógica
+ *
+ * @author alex
+ */
 @Service
 public class CountryServiceImpl implements CountryService {
 

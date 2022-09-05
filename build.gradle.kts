@@ -36,10 +36,6 @@ dependencies {
     runtimeOnly("mysql:mysql-connector-java")
     compileOnly("org.jetbrains:annotations:23.0.0")
 
-    implementation("software.amazon.awssdk:dynamodb:2.17.261")
-    implementation("com.amazonaws:aws-java-sdk-core:1.12.290")
-    implementation("com.amazonaws:aws-java-sdk-dynamodb:1.12.290")
-
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

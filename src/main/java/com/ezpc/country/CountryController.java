@@ -1,15 +1,13 @@
 package com.ezpc.country;
 
-import com.ezpc.domain.country.CountryModel;
-import com.ezpc.domain.country.CountryRepository;
-import com.ezpc.domain.country.CountryRepresentation;
-import com.ezpc.domain.country.CountryService;
-import org.springframework.http.HttpStatus;
+import com.ezpc.domain.country.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/country")
@@ -26,47 +24,37 @@ public class CountryController {
     @PutMapping("/")
     public ResponseEntity<String> create(@RequestBody CountryDto dto) {
 
-        if (service.existsWithName(dto.getName())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("A country with name %s already exists".formatted(dto.getName()));
-        }
+        new CountryCreateAction(service)
+                .accept(dto);
 
-        service.create(new CountryModel(dto));
-
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Created");
+        return ok("created");
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CountryRepresentation> read(@PathVariable("id") UUID id) {
 
-        var dto = repository.getById(id);
+        var dto = new CountryReadAction(repository)
+                .apply(id);
 
-        if (dto == null) return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .build();
-
-        return ResponseEntity.ok(dto);
+        return ok(dto);
     }
 
     @GetMapping("/list")
     public ResponseEntity<List<? extends CountryRepresentation>> list() {
-        var list = repository.list();
+        var countryList = new CountryReadAction(repository)
+                .list();
 
-        if (list.isEmpty()) return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                .build();
+        if (countryList.isEmpty()) return ResponseEntity.noContent().build();
 
-        return ResponseEntity.ok(list);
+        return ok(countryList);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") UUID id) {
-        if (service.delete(id)) {
-            return ResponseEntity.ok()
-                    .build();
-        }
+        new CountryDeleteAction(service)
+                .accept(id);
 
-        return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body("Country with id '%s' not found".formatted(id));
+        return ok("Deleted");
     }
 
 }
