@@ -68,7 +68,7 @@ jooq {
         val DB_PASS = System.getenv("DB_PASS") ?: "sinty"
 
         create("main") {
-            generateSchemaSourceOnCompilation.set(true)
+            generateSchemaSourceOnCompilation.set(false)
 
             jooqConfiguration.apply {
                 logging = org.jooq.meta.jaxb.Logging.WARN
