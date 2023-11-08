@@ -4,10 +4,20 @@
 package com.ezpc.mysql;
 
 
-import com.ezpc.mysql.tables.Country;
-import com.ezpc.mysql.tables.Developer;
-import com.ezpc.mysql.tables.records.CountryRecord;
-import com.ezpc.mysql.tables.records.DeveloperRecord;
+import com.ezpc.mysql.tables.Appointment;
+import com.ezpc.mysql.tables.Doctor;
+import com.ezpc.mysql.tables.Drug;
+import com.ezpc.mysql.tables.Hospital;
+import com.ezpc.mysql.tables.Hospitaldoctor;
+import com.ezpc.mysql.tables.Patient;
+import com.ezpc.mysql.tables.Prescription;
+import com.ezpc.mysql.tables.records.AppointmentRecord;
+import com.ezpc.mysql.tables.records.DoctorRecord;
+import com.ezpc.mysql.tables.records.DrugRecord;
+import com.ezpc.mysql.tables.records.HospitalRecord;
+import com.ezpc.mysql.tables.records.HospitaldoctorRecord;
+import com.ezpc.mysql.tables.records.PatientRecord;
+import com.ezpc.mysql.tables.records.PrescriptionRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -26,6 +36,12 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<CountryRecord> KEY_COUNTRY_PRIMARY = Internal.createUniqueKey(Country.COUNTRY, DSL.name("KEY_country_PRIMARY"), new TableField[] { Country.COUNTRY.UUID }, true);
-    public static final UniqueKey<DeveloperRecord> KEY_DEVELOPER_PRIMARY = Internal.createUniqueKey(Developer.DEVELOPER, DSL.name("KEY_developer_PRIMARY"), new TableField[] { Developer.DEVELOPER.UUID }, true);
+    public static final UniqueKey<AppointmentRecord> KEY_APPOINTMENT_PRIMARY = Internal.createUniqueKey(Appointment.APPOINTMENT, DSL.name("KEY_appointment_PRIMARY"), new TableField[] { Appointment.APPOINTMENT.HOSPITALID, Appointment.APPOINTMENT.UUID }, true);
+    public static final UniqueKey<DoctorRecord> KEY_DOCTOR_PRIMARY = Internal.createUniqueKey(Doctor.DOCTOR, DSL.name("KEY_doctor_PRIMARY"), new TableField[] { Doctor.DOCTOR.UUID }, true);
+    public static final UniqueKey<DoctorRecord> KEY_DOCTOR_UNIQUE_USER_INDEX = Internal.createUniqueKey(Doctor.DOCTOR, DSL.name("KEY_doctor_unique_user_index"), new TableField[] { Doctor.DOCTOR.USER }, true);
+    public static final UniqueKey<DrugRecord> KEY_DRUG_PRIMARY = Internal.createUniqueKey(Drug.DRUG, DSL.name("KEY_drug_PRIMARY"), new TableField[] { Drug.DRUG.ID }, true);
+    public static final UniqueKey<HospitalRecord> KEY_HOSPITAL_PRIMARY = Internal.createUniqueKey(Hospital.HOSPITAL, DSL.name("KEY_hospital_PRIMARY"), new TableField[] { Hospital.HOSPITAL.ID }, true);
+    public static final UniqueKey<HospitaldoctorRecord> KEY_HOSPITALDOCTOR_PRIMARY = Internal.createUniqueKey(Hospitaldoctor.HOSPITALDOCTOR, DSL.name("KEY_hospitalDoctor_PRIMARY"), new TableField[] { Hospitaldoctor.HOSPITALDOCTOR.HOSPITALID, Hospitaldoctor.HOSPITALDOCTOR.DOCTORID }, true);
+    public static final UniqueKey<PatientRecord> KEY_PATIENT_PRIMARY = Internal.createUniqueKey(Patient.PATIENT, DSL.name("KEY_patient_PRIMARY"), new TableField[] { Patient.PATIENT.HOSPITALID, Patient.PATIENT.UUID }, true);
+    public static final UniqueKey<PrescriptionRecord> KEY_PRESCRIPTION_PRIMARY = Internal.createUniqueKey(Prescription.PRESCRIPTION, DSL.name("KEY_prescription_PRIMARY"), new TableField[] { Prescription.PRESCRIPTION.HOSPITALID, Prescription.PRESCRIPTION.DOCTORID }, true);
 }

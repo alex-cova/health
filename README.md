@@ -9,7 +9,7 @@ El proyecto usa Gradle 7.5 con Kotlin DSL, es probable que tarde en descargar lo
 ## Requerimientos
 
 - Docker
-- Java 8 & 18
+- Java 20
 - MySQL 8
 - IntelliJ
 
@@ -103,7 +103,7 @@ Configuración
 
 ```kotlin
 jooq {
-    version.set("3.17.3")
+    version.set("3.18.4")
     edition.set(nu.studer.gradle.jooq.JooqEdition.OSS)
 
     configurations {

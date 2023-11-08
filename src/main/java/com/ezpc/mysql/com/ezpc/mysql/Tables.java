@@ -4,8 +4,13 @@
 package com.ezpc.mysql;
 
 
-import com.ezpc.mysql.tables.Country;
-import com.ezpc.mysql.tables.Developer;
+import com.ezpc.mysql.tables.Appointment;
+import com.ezpc.mysql.tables.Doctor;
+import com.ezpc.mysql.tables.Drug;
+import com.ezpc.mysql.tables.Hospital;
+import com.ezpc.mysql.tables.Hospitaldoctor;
+import com.ezpc.mysql.tables.Patient;
+import com.ezpc.mysql.tables.Prescription;
 
 
 /**
@@ -15,12 +20,37 @@ import com.ezpc.mysql.tables.Developer;
 public class Tables {
 
     /**
-     * The table <code>spring.country</code>.
+     * The table <code>spring.appointment</code>.
      */
-    public static final Country COUNTRY = Country.COUNTRY;
+    public static final Appointment APPOINTMENT = Appointment.APPOINTMENT;
 
     /**
-     * The table <code>spring.developer</code>.
+     * The table <code>spring.doctor</code>.
      */
-    public static final Developer DEVELOPER = Developer.DEVELOPER;
+    public static final Doctor DOCTOR = Doctor.DOCTOR;
+
+    /**
+     * The table <code>spring.drug</code>.
+     */
+    public static final Drug DRUG = Drug.DRUG;
+
+    /**
+     * The table <code>spring.hospital</code>.
+     */
+    public static final Hospital HOSPITAL = Hospital.HOSPITAL;
+
+    /**
+     * The table <code>spring.hospitalDoctor</code>.
+     */
+    public static final Hospitaldoctor HOSPITALDOCTOR = Hospitaldoctor.HOSPITALDOCTOR;
+
+    /**
+     * The table <code>spring.patient</code>.
+     */
+    public static final Patient PATIENT = Patient.PATIENT;
+
+    /**
+     * The table <code>spring.prescription</code>.
+     */
+    public static final Prescription PRESCRIPTION = Prescription.PRESCRIPTION;
 }

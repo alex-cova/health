@@ -36,7 +36,7 @@ fun <T> ResponseEntity<T>.assertCreated(): ResponseEntity<T> {
     return this
 }
 
-fun <T> ResponseEntity<T>.assertStatus(status : HttpStatus): ResponseEntity<T> {
+fun <T> ResponseEntity<T>.assertStatus(status: HttpStatus): ResponseEntity<T> {
     if (this.statusCode != status) {
         Assertions.fail<Any>("Expected 200 but got $statusCode body: $body")
     }
